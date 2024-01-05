@@ -1,14 +1,11 @@
-import express, {Express, Request, Response} from "express";
+import express, {Express} from "express";
+import { indexCreationHandler, queryHandler } from "./handlers";
 
 const router = express.Router();
 
-router.get('/create-index', (req: Request, res: Response) => {
-  console.log('Index creating...');
-});
+router.get('/create-index', indexCreationHandler);
 
-router.get('/query/:word', (req: Request, res: Response) => {
-  console.log('Extracting index results for word ' + req.params.word);
-});
+router.get('/query/:word', queryHandler);
 
 export default function useRouter(app: Express) {
   app.use(router);
