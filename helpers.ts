@@ -12,7 +12,8 @@ export function scanFile(index: any[], filename: string, file_position: number) 
 }
 
 export function wordsToFormat(words: string[]) {
-  return [''];
+  const res = words.map(w => String(w.match(/[A-Za-z]/g)?.join('')));
+  return res.map(w => w.toLowerCase());
 }
 
 export function getWordCountsInFiles(word: string) {
