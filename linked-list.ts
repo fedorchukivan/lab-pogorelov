@@ -66,30 +66,34 @@ export class IndexList {
     if (this.head === null) {
       this.head = new Node(word, file_position);
       this.length++;
+      return;
     }
-    else {
-      let pointer = this.head;
-      while (true) {
-        if (pointer.getWord() === word) {
-          pointer.incrementFreq(file_position);
-          break;
-        }
-
-        const next = pointer.getNext();
-        if (!next) {
-          pointer.setNext(new Node(word, file_position));
-          this.length++;
-          break;
-        }
-        
-        if (next.getWord() > word) {
-          pointer.setNext(new Node(word, file_position, next));
-          this.length++;
-          break;
-        }
-
-        pointer = next;
+    if (this.head.getWord() > word) {
+      this.head = new Node(word, file_position, this.head);
+      this.length++;
+      return;
+    }
+    let pointer = this.head;
+    while (true) {
+      if (pointer.getWord() === word) {
+        pointer.incrementFreq(file_position);
+        break;
       }
+
+      const next = pointer.getNext();
+      if (!next) {
+        pointer.setNext(new Node(word, file_position));
+        this.length++;
+        break;
+      }
+      
+      if (next.getWord() > word) {
+        pointer.setNext(new Node(word, file_position, next));
+        this.length++;
+        break;
+      }
+
+      pointer = next;
     }
   }
 }
