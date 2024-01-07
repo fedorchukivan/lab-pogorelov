@@ -14,8 +14,16 @@ export class Node {
     return [this.word, this.freq];
   }
 
+  getWord() {
+    return this.word;
+  }
+
   getNext() {
     return this.next;
+  }
+
+  setNext(node: Node | null) {
+    this.next = node;
   }
 
   isNext() {
@@ -23,8 +31,8 @@ export class Node {
   }
 
   incrementFreq(file_position: number) {
-    if (this.freq.length < file_position+1) {
-      this.freq[file_position] = 0;
+    while (this.freq.length <= file_position) {
+      this.freq.push(0);
     }
     this.freq[file_position]++;
   }
@@ -44,10 +52,44 @@ export class IndexList {
   }
 
   getWordFreq(word: string) {
+    let pointer = this.head;
+    while (pointer !== null && pointer.getWord() <= word) {
+      if (pointer.getWord() === word) {
+        return pointer.getValues()[1];
+      }
+      pointer = pointer.getNext();
+    }
     return [0];
   }
 
   incrementWord(word: string, file_position: number) {
+    if (this.head === null) {
+      this.head = new Node(word, file_position);
+      this.length++;
+    }
+    else {
+      let pointer = this.head;
+      while (true) {
+        if (pointer.getWord() === word) {
+          pointer.incrementFreq(file_position);
+          break;
+        }
 
+        const next = pointer.getNext();
+        if (!next) {
+          pointer.setNext(new Node(word, file_position));
+          this.length++;
+          break;
+        }
+        
+        if (next.getWord() > word) {
+          pointer.setNext(new Node(word, file_position, next));
+          this.length++;
+          break;
+        }
+
+        pointer = next;
+      }
+    }
   }
 }
