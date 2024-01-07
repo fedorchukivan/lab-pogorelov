@@ -27,9 +27,11 @@ describe('Index list classes', () => {
     it('should add words correctly', () => {
       list.incrementWord('tes', 0);
       list.incrementWord('tes', 1);
+      list.incrementWord('tes', 1);
+      list.incrementWord('tes', 3);
       list.incrementWord('test', 1);
       expect(list.size()).toBe(2);
-      expect(list.getWordFreq('tes').length).toBe(2);
+      expect(list.getWordFreq('tes')).toEqual([1,2,0,1]);
     });
   });
 });
