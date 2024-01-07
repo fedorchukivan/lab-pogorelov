@@ -5,7 +5,3 @@ const port = 5000;
 get().listen(port, () => {
   console.log('Application server listening on port ' + port);
 });
-
-export function get() {
-  return app;
-};
