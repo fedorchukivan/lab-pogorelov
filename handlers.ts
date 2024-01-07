@@ -13,7 +13,7 @@ export function indexCreationHandler(req: Request, res: Response) {
   }
   const indexJSON = JSON.stringify(index);
   fs.writeFileSync(path.resolve(config.index_path), indexJSON);
-  res.status(200).send('Index file was created successfully!');
+  res.status(200).send({ message: 'Index file was created successfully!' });
 }
 
 export function queryHandler(req: Request, res: Response) {
