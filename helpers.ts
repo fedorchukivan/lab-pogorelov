@@ -1,5 +1,10 @@
+import path from "path";
+import config from "./config";
+import fs from 'fs';
+
 export function getFileNames() {
-  return [''];
+  const buff = fs.readFileSync(path.resolve(String(config.filenames_path)), 'utf-8');
+  return JSON.parse(buff).files;
 }
 
 export function scanFile(index: any[], filename: string, file_position: number) {
