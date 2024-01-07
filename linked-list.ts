@@ -5,7 +5,8 @@ export class Node {
   
     constructor(word: string, file_position: number, next: Node | null = null) {
       this.word = word;
-      this.freq = [0];
+      this.freq = new Array(file_position + 1).fill(0);
+      this.freq[file_position]++;
       this.next = next;
     }
 
@@ -22,7 +23,10 @@ export class Node {
   }
 
   incrementFreq(file_position: number) {
-
+    if (this.freq.length < file_position+1) {
+      this.freq[file_position] = 0;
+    }
+    this.freq[file_position]++;
   }
 }
 
