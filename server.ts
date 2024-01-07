@@ -9,3 +9,7 @@ useRouter(app);
 app.listen(port, () => {
   console.log('Application server listening on port ' + port);
 });
+
+export function get() {
+  return app;
+};
