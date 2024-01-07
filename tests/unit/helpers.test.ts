@@ -14,12 +14,17 @@ describe('Index creation helpers', () => {
     const res = ['abc', 'abc', 'abc'];
     const punctuationInWords = [',abc', 'abc!', 'abc.'];
     const uppercaseInWords = ['Abc', 'aBc', 'ABC'];
+    const nonLettersWords = ['abc', 'abc', 'abc', '\"!\"'];
     it('should remove punctuation characters', () => {
       const words = wordsToFormat(punctuationInWords);
       expect(words).toEqual(res);
     });
     it('should change uppercase letters to lowercase', () => {
       const words = wordsToFormat(uppercaseInWords);
+      expect(words).toEqual(res);
+    });
+    it('should remove non letter sign combinations', () => {
+      const words = wordsToFormat(nonLettersWords);
       expect(words).toEqual(res);
     });
   });
