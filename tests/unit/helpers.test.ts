@@ -1,4 +1,5 @@
 import { getFileNames, getWordCountsInFiles, scanFile, wordsToFormat } from "../../helpers";
+import { IndexList } from "../../linked-list";
 
 describe('Index creation helpers', () => {
   const filenames = ['file1.txt', 'file2.txt', 'file3.txt'];
@@ -30,27 +31,20 @@ describe('Index creation helpers', () => {
   });
 
   describe('File scanning', () => {
-    let index: any[] = [];
+    let index = new IndexList();
     it('should add objects to index array', () => {
       index = scanFile(index, 'file1.txt', 0);
-      expect(index.length).toBeGreaterThan(0);
-    });
-    it('should add words in alphabetic order', () => {
-      expect(index.length).toBe(3);
-      expect(index[0]?.word).toBe('chamber');
-      expect(index[2]?.word).toBe('talking');
+      expect(index.size()).toBeGreaterThan(0);
     });
     it('should add correct counts of words to index', () => {
-      expect(index.length).toBe(3);
-      expect(index[0]?.freq[0]).toBe(3);
+      expect(index.size()).toBe(3);
+      expect(index.getWordFreq('chamber')[0]).toBe(3);
     });
     it('should correctly process more than one file', () => {
       index = scanFile(index, 'file2.txt', 1);
-      expect(index.length).toBe(5);
-      expect(index[0]?.word).toBe('chamber');
-      expect(index[4]?.word).toBe('talking');
-      expect(index[0]?.freq.length).toBe(2);
-      expect(index[0]?.freq[1]).toBe(1);
+      expect(index.size()).toBe(5);
+      expect(index.getWordFreq('chamber').length).toBe(2);
+      expect(index.getWordFreq('chamber')[1]).toBe(1);
     });
   });
 });

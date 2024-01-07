@@ -1,8 +1,10 @@
+import { IndexList } from "./linked-list";
+
 export function getFileNames() {
   return [''];
 }
 
-export function scanFile(index: any[], filename: string, file_position: number) {
+export function scanFile(index: IndexList, filename: string, file_position: number) {
   return index;
 }
 
