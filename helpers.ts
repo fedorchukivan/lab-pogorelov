@@ -1,3 +1,4 @@
+import { IndexList } from "./linked-list";
 import path from "path";
 import config from "./config";
 import fs from 'fs';
@@ -7,7 +8,7 @@ export function getFileNames() {
   return JSON.parse(buff).files;
 }
 
-export function scanFile(index: any[], filename: string, file_position: number) {
+export function scanFile(index: IndexList, filename: string, file_position: number) {
   return index;
 }
 
