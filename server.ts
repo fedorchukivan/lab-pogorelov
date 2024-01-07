@@ -1,11 +1,7 @@
-import express from "express";
-import useRouter from "./router";
+import { get } from "./app";
 
-const app = express();
 const port = 5000;
 
-useRouter(app);
-
-app.listen(port, () => {
+get().listen(port, () => {
   console.log('Application server listening on port ' + port);
 });
