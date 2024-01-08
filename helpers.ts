@@ -27,7 +27,7 @@ export function wordsToFormat(words: string[]) {
   return res.map(w => String(w).toLowerCase());
 }
 
-export function getWordCountsInFiles(word: string, index: string, filenames: string) {
+export function getWordCountsInFiles(word: string, index: string, filenames: string): any[] | null {
   const files_path = config.files_loc + 'artifacts/' + filenames;
   if (!fs.existsSync(files_path)) {
     return null;
