@@ -1,16 +1,14 @@
 import { IndexList } from "./linked-list";
-import path from "path";
 import config from "./config";
 import fs from 'fs';
 
 export function getFileNames(dirname: string) {
-  const filenames: string[] = [];
-  fs.readdirSync(path.resolve(dirname)).forEach(f => filenames.push(f));
+  const filenames = fs.readdirSync(dirname);
   return filenames;
 }
 
 export function scanFile(index: IndexList, filename: string, file_position: number) {
-  const text = fs.readFileSync(path.resolve(config.files_dir_path, filename));
+  const text = fs.readFileSync(config.files_dir_path + filename);
   const words = wordsToFormat(text.toString().split(' '));
   for (const word of words) {
     index.incrementWord(word, file_position);
