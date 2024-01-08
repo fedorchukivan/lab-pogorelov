@@ -13,10 +13,10 @@ describe('Index creation helpers', () => {
   });
 
   describe('Words formatting', () => {
-    const res = ['abc', 'abc', 'abc'];
-    const punctuationInWords = [',abc', 'abc!', 'abc.'];
-    const uppercaseInWords = ['Abc', 'aBc', 'ABC'];
-    const nonLettersWords = ['abc', 'abc', 'abc', '\"!\"'];
+    const res = ['a1bc', 'abc2', 'abc'];
+    const punctuationInWords = [',a1bc', 'abc2!', 'abc.'];
+    const uppercaseInWords = ['A1bc', 'aBc2', 'ABC'];
+    const nonLettersWords = ['a1bc', 'abc2', 'abc', '\"!\"'];
     it('should remove punctuation characters', () => {
       const words = wordsToFormat(punctuationInWords);
       expect(words).toEqual(res);
