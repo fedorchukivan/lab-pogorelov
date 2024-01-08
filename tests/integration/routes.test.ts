@@ -11,7 +11,8 @@ describe('API Routes', () => {
     });
     it('should add relevant files to artifacts directory', () => {
       const files = fs.readdirSync(config.files_loc + 'artifacts');
-      expect(files).toContain(['test-filenames.json', 'test-index.json']);
+      expect(files).toContain('test-filenames.json');
+      expect(files).toContain('test-index.json');
     });
     it('should have appropriate content in resulting files', () => {
       const buff = fs.readFileSync(config.files_loc + 'artifacts/test-filenames.json').toString();
@@ -19,8 +20,8 @@ describe('API Routes', () => {
       expect(files.files).toEqual(['file1.txt', 'file2.txt', 'file3.txt']);
       const index_buff = fs.readFileSync(config.files_loc + 'artifacts/test-index.json').toString();
       const index = JSON.parse(index_buff);
-      expect(index[0]).toBe({ word: 'chamber', freq: [3,1,1] });
-      expect(index[5]).toBe({ word: 'talking', freq: [1] });
+      expect(index[0]).toEqual({ word: 'chamber', freq: [3,1,1] });
+      expect(index[5]).toEqual({ word: 'talking', freq: [1] });
     });
   });
 
