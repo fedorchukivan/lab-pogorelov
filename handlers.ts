@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import config from "./config";
-import { getFileNames, scanFile } from "./helpers";
+import { getFileNames, getWordCountsInFiles, scanFile } from "./helpers";
 import { IndexList } from "./linked-list";
 import fs from 'fs';
 import path from 'path';
@@ -36,5 +36,16 @@ export function indexCreationHandler(req: Request, res: Response) {
 }
 
 export function queryHandler(req: Request, res: Response) {
-  console.log('Extracting index results for word ' + req.params.word);
+  if (!req.query.word) {
+    res.status(400).send({ message: "Error: Word for performing query was not found!" });
+  }
+  const word = String(req.query.word);
+  const filenames = req.query.filenames
+                  ? req.query.filenames + '.json'
+                  : config.filenames_default;
+  const index_name = req.query.index
+                  ? req.query.index + '.json'
+                  : config.index_default;
+  const queryResult = getWordCountsInFiles(word, index_name, filenames);
+  res.status(200).send(queryResult);
 }
