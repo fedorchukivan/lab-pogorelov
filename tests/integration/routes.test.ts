@@ -7,7 +7,7 @@ describe('API Routes', () => {
   describe('Create-index route', () => {
     it('should return positive response with 200 code', async () => {
       const {body: data} = await request.get('/create-index?filenames=test-filenames&index=test-index').expect(200);
-      expect(data.message).toBe('Index file was created successfully!');
+      expect(data.message).toBe('Index file test-index.json was created successfully! Filenames are stored in test-filenames.json file.');
     });
     it('should add relevant files to artifacts directory', () => {
       const files = fs.readdirSync(config.files_loc + 'artifacts');
