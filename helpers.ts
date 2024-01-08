@@ -10,6 +10,6 @@ export function wordsToFormat(words: string[]) {
   return [''];
 }
 
-export function getWordCountsInFiles(word: string) {
+export function getWordCountsInFiles(word: string, index: string, filenames: string) {
   return [''];
 }
