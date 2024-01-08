@@ -47,5 +47,8 @@ export function queryHandler(req: Request, res: Response) {
                   ? req.query.index + '.json'
                   : config.index_default;
   const queryResult = getWordCountsInFiles(word, index_name, filenames);
-  res.status(200).send(queryResult);
+
+  queryResult
+    ? res.status(200).send(queryResult)
+    : res.status(409).send({ message: 'Filenames or index file with such name doesn\'t exist in system' });
 }
