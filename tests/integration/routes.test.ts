@@ -27,9 +27,12 @@ describe('API Routes', () => {
 
   describe('Query route', () => {
     it('should return correct data with 200 code', async () => {
-      const {body: data} = await request.get('/create-index?word=talking&index=test-index').expect(200);
+      const {body: data} = await request.get('/query?word=talking&index=test-index').expect(200);
       expect(data.length).toBe(1);
       expect(data).toEqual([{ file: 'file1.txt', counts: 1 }]);
+    });
+    it('should return 400 code when word for query isn\'t specified', async () => {
+      await request.get('/query').expect(400);
     });
   });
 });
