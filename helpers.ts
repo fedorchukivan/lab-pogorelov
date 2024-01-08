@@ -4,7 +4,9 @@ import config from "./config";
 import fs from 'fs';
 
 export function getFileNames(dirname: string) {
-  return [''];
+  const filenames: string[] = [];
+  fs.readdirSync(path.resolve(dirname)).forEach(f => filenames.push(f));
+  return filenames;
 }
 
 export function scanFile(index: IndexList, filename: string, file_position: number) {
