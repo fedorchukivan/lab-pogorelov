@@ -1,3 +1,4 @@
+import config from "../../config";
 import { getFileNames, getWordCountsInFiles, scanFile, wordsToFormat } from "../../helpers";
 import { IndexList } from "../../linked-list";
 
@@ -6,7 +7,7 @@ describe('Index creation helpers', () => {
 
   describe('Reading file names', () => {
     it('should return correct filenames array', () => {
-      const names = getFileNames();
+      const names = getFileNames(config.files_loc + config.files_dir_path);
       expect(names).toEqual(filenames);
     });
   });

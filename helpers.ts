@@ -3,9 +3,8 @@ import path from "path";
 import config from "./config";
 import fs from 'fs';
 
-export function getFileNames() {
-  const buff = fs.readFileSync(path.resolve(config.filenames_path), 'utf-8');
-  return JSON.parse(buff).files;
+export function getFileNames(dirname: string) {
+  return [''];
 }
 
 export function scanFile(index: IndexList, filename: string, file_position: number) {

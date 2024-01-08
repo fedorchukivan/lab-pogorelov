@@ -6,13 +6,13 @@ import fs from 'fs';
 import path from "path";
 
 export function indexCreationHandler(req: Request, res: Response) {
-  const files = getFileNames();
+  const files = getFileNames('');
   let index = new IndexList();
   for (let i = 0; i < files.length; i++) {
     scanFile(index, files[i], i);
   }
   const indexJSON = JSON.stringify(index);
-  fs.writeFileSync(path.resolve(config.index_path), indexJSON);
+  fs.writeFileSync(path.resolve(''), indexJSON);
   res.status(200).send({ message: 'Index file was created successfully!' });
 }
 
