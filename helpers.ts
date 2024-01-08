@@ -1,6 +1,6 @@
 import { IndexList } from "./linked-list";
 
-export function getFileNames() {
+export function getFileNames(dirname: string) {
   return [''];
 }
 

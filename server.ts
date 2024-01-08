@@ -1,6 +1,7 @@
 import { get } from "./app";
+import config from "./config";
 
-const port = 5000;
+const port = config.port;
 
 get().listen(port, () => {
   console.log('Application server listening on port ' + port);
