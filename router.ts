@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/create-index', indexCreationHandler);
 
-router.get('/query/:word', queryHandler);
+router.get('/query', queryHandler);
 
 export default function useRouter(app: Express) {
   app.use(router);
