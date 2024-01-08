@@ -1,4 +1,4 @@
-export function getFileNames() {
+export function getFileNames(dirname: string) {
   return [''];
 }
 
