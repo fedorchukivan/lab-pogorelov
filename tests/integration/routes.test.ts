@@ -34,5 +34,9 @@ describe('API Routes', () => {
     it('should return 400 code when word for query isn\'t specified', async () => {
       await request.get('/query').expect(400);
     });
+    it('should return 409 code if index file or filenames doesn\'t exist', async () => {
+      await request.get('/query?word=a&filenames=qqqqq').expect(409);
+      await request.get('/query?word=a&index=qqqqq').expect(409);
+    });
   });
 });
