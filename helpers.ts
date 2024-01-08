@@ -8,7 +8,7 @@ export function getFileNames(dirname: string) {
 }
 
 export function scanFile(index: IndexList, filename: string, file_position: number) {
-  const text = fs.readFileSync(config.files_dir_path + filename);
+  const text = fs.readFileSync(config.files_loc + config.files_dir_path + '/' + filename);
   const words = wordsToFormat(text.toString().split(' '));
   for (const word of words) {
     index.incrementWord(word, file_position);
