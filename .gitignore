@@ -1,3 +1,6 @@
+#Directory with output json files
+artifacts
+
 # Logs
 logs
 *.log
