@@ -27,6 +27,6 @@ export function wordsToFormat(words: string[]) {
   return res.map(w => String(w).toLowerCase());
 }
 
-export function getWordCountsInFiles(word: string, index: string | null, filenames: string | null) {
+export function getWordCountsInFiles(word: string, index: string, filenames: string) {
   return [{file: '', counts: 0}, {file: '', counts: 0}];
 }
