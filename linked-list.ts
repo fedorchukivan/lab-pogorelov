@@ -36,6 +36,13 @@ export class Node {
     }
     this.freq[file_position]++;
   }
+
+  serialize() {
+    return {
+      word: this.word,
+      freq: this.freq
+    }
+  }
 }
 
 export class IndexList {
@@ -95,5 +102,15 @@ export class IndexList {
 
       pointer = next;
     }
+  }
+
+  serialize() {
+    let pointer = this.head;
+    const res: any[] = [];
+    while (pointer !== null) {
+      res.push(pointer.serialize());
+      pointer = pointer.getNext();
+    }
+    return res;
   }
 }

@@ -17,7 +17,7 @@ export function indexCreationHandler(req: Request, res: Response) {
                   : config.files_dir_path;
   const files = getFileNames(config.files_loc + dirname);
 
-  const filesJSON = JSON.stringify({files});
+  const filesJSON = JSON.stringify({files}, null, 2);
   const filenames = req.query.filenames
                   ? req.query.filenames + '.json'
                   : config.filenames_default;
@@ -27,7 +27,7 @@ export function indexCreationHandler(req: Request, res: Response) {
   for (let i = 0; i < files.length; i++) {
     scanFile(index, files[i], i);
   }
-  const indexJSON = JSON.stringify(index);
+  const indexJSON = JSON.stringify(index.serialize(), null, 2);
   const index_name = req.query.index
                   ? req.query.index + '.json'
                   : config.index_default;
