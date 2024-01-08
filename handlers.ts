@@ -6,17 +6,18 @@ import fs from 'fs';
 import path from "path";
 
 export function indexCreationHandler(req: Request, res: Response) {
-  let dirname = config.files_loc;
-  dirname += req.query.dirname ? req.query.dirname : config.files_dir_path;
-  const files = getFileNames(dirname);
+  const dirname = req.query.dirname || config.files_dir_path;
+  const files = getFileNames(config.files_loc + dirname);
+  const filesJSON = JSON.stringify({files});
+  const filenames = req.query.filenames || config.filenames_default;
+  fs.writeFileSync(path.resolve(config.files_loc + filenames), filesJSON);
   let index = new IndexList();
   for (let i = 0; i < files.length; i++) {
     scanFile(index, files[i], i);
   }
   const indexJSON = JSON.stringify(index);
-  let index_path = config.files_loc;
-  index_path += req.query.index ? req.query.index : config.index_default;
-  fs.writeFileSync(path.resolve(index_path), indexJSON);
+  const index_name = req.query.index || config.index_default;
+  fs.writeFileSync(path.resolve(config.files_loc + index_name), indexJSON);
   res.status(200).send({ message: 'Index file was created successfully!' });
 }
 
