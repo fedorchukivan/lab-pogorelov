@@ -53,11 +53,11 @@ describe('Index creation helpers', () => {
 describe('Query helpers', () => {
   describe('Getting word counts', () => {
     it('should return correct amount of files', () => {
-      expect(getWordCountsInFiles('chamber', 'test-index.json', null).length).toBe(3);
-      expect(getWordCountsInFiles('find', 'test-index.json', null).length).toBe(1);
+      expect(getWordCountsInFiles('chamber', 'test-index.json', 'test-filenames.json').length).toBe(3);
+      expect(getWordCountsInFiles('find', 'test-index.json', 'test-filenames.json').length).toBe(1);
     });
     it('should return appropriate file and counts for word', () => {
-      const res = getWordCountsInFiles('chamber', 'test-index.json', null);
+      const res = getWordCountsInFiles('chamber', 'test-index.json', 'test-filenames.json');
       expect(res[0].file).toBe('file1.txt');
       expect(res[0].counts).toBe(3);
     });
