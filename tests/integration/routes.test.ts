@@ -25,4 +25,11 @@ describe('API Routes', () => {
     });
   });
 
+  describe('Query route', () => {
+    it('should return correct data with 200 code', async () => {
+      const {body: data} = await request.get('/create-index?word=talking&index=test-index').expect(200);
+      expect(data.length).toBe(1);
+      expect(data).toEqual([{ file: 'file1.txt', counts: 1 }]);
+    });
+  });
 });
