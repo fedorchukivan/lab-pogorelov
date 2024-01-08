@@ -32,7 +32,7 @@ export function indexCreationHandler(req: Request, res: Response) {
                   ? req.query.index + '.json'
                   : config.index_default;
   writeFile(config.files_loc + 'artifacts/' + index_name, indexJSON);
-  res.status(200).send({ message: 'Index file was created successfully!' });
+  res.status(200).send({ message: `Index file ${index_name} was created successfully! Filenames are stored in ${filenames} file.` });
 }
 
 export function queryHandler(req: Request, res: Response) {

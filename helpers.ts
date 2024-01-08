@@ -17,7 +17,7 @@ export function scanFile(index: IndexList, filename: string, file_position: numb
 }
 
 function leaveOnlyLetters(word: string) {
-  return word.match(/[A-Za-z]/g)?.join('');
+  return word.match(/[A-Za-z0-9]/g)?.join('');
 }
 
 export function wordsToFormat(words: string[]) {
