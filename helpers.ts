@@ -28,5 +28,14 @@ export function wordsToFormat(words: string[]) {
 }
 
 export function getWordCountsInFiles(word: string, index: string, filenames: string) {
-  return [{file: '', counts: 0}, {file: '', counts: 0}];
+  const files_buff = fs.readFileSync(config.files_loc + 'artifacts/' + filenames).toString();
+  const files: string[] = JSON.parse(files_buff).files;
+  const index_buff = fs.readFileSync(config.files_loc + 'artifacts/' + index).toString();
+  const index_arr: any[] = JSON.parse(index_buff);
+  const freq: number[] = index_arr.find(w => w.word === word).freq;
+  const res: any[] = [];
+  for (const i in freq) {
+    if (freq[i] > 0) res.push({ file: files[i], counts: freq[i] });
+  }
+  return res;
 }
