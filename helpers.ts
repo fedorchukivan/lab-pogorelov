@@ -12,6 +12,6 @@ export function wordsToFormat(words: string[]) {
   return [''];
 }
 
-export function getWordCountsInFiles(word: string, index: string, filenames: string) {
-  return [{file: '', counts: 0}, {file: '', counts: 0}];
+export function getWordCountsInFiles(word: string, index: string, filenames: string): any[] | null {
+  return [{}];
 }
