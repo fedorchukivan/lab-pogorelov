@@ -1,5 +1,5 @@
-#Directory with output json files
-artifacts
+#Directory with source and output json files
+files
 
 # Logs
 logs
