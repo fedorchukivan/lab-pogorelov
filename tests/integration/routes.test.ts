@@ -23,6 +23,9 @@ describe('API Routes', () => {
       expect(index[0]).toEqual({ word: 'chamber', freq: [3,1,1] });
       expect(index[5]).toEqual({ word: 'talking', freq: [1] });
     });
+    it('should return 409 code if directory doesn\'t exist', async () => {
+      await request.get('/create-index?dirname=non_existing_directory').expect(409);
+    });
   });
 
   describe('Query route', () => {
