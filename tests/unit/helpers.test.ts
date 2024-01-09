@@ -68,5 +68,9 @@ describe('Query helpers', () => {
         expect(res[0].counts).toBe(3);
       }
     });
+    it('should return empty array if word isn\'t presented in files', () => {
+      const res = getWordCountsInFiles('aaaaaa', 'test-index.json', 'test-filenames.json');
+      expect(res).toEqual([]);
+    });
   });
 });
