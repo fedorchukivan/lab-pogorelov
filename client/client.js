@@ -36,7 +36,7 @@ function createIndex() {
   fetch(getIndexCreationURL(params))
     .then(res => {
       if(!res.ok) {
-        throw new Error();
+        throw new Error(`with ${res.status} code: '${res.statusText}'`);
       }
       
       return res.json();

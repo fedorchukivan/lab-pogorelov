@@ -17,7 +17,7 @@ export function indexCreationHandler(req: Request, res: Response) {
                   : config.files_dir_path;
   const dir_path = config.files_loc + dirname;
   if (!fs.existsSync(dir_path)) {
-    res.statusMessage = `Directory with '${dirname}' don't exist.`;
+    res.statusMessage = `Directory with '${dirname}' name don't exist.`;
     res.sendStatus(409);
     return;
   }
