@@ -13,9 +13,15 @@ function writeFile(_path: string, contents: string) {
 
 export function indexCreationHandler(req: Request, res: Response) {
   const dirname = req.query.dirname
-                  ? req.query.dirname + '.json'
+                  ? req.query.dirname
                   : config.files_dir_path;
-  const files = getFileNames(config.files_loc + dirname);
+  const dir_path = config.files_loc + dirname;
+  if (!fs.existsSync(dir_path)) {
+    res.statusMessage = `Directory with '${dirname}' don't exist.`;
+    res.sendStatus(409);
+    return;
+  }
+  const files = getFileNames(dir_path);
 
   const filesJSON = JSON.stringify({files}, null, 2);
   const filenames = req.query.filenames
