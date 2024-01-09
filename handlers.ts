@@ -37,7 +37,9 @@ export function indexCreationHandler(req: Request, res: Response) {
 
 export function queryHandler(req: Request, res: Response) {
   if (!req.query.word) {
-    res.status(400).send({ message: "Error: Word for performing query was not found!" });
+    res.statusMessage = "Word for performing query was not found!";
+    res.sendStatus(400);
+    return;
   }
   const word = String(req.query.word);
   const filenames = req.query.filenames
@@ -48,7 +50,11 @@ export function queryHandler(req: Request, res: Response) {
                   : config.index_default;
   const queryResult = getWordCountsInFiles(word, index_name, filenames);
 
-  queryResult
-    ? res.status(200).send(queryResult)
-    : res.status(409).send({ message: 'Filenames or index file with such name doesn\'t exist in system' });
+  if (queryResult) {
+    res.status(200).send(queryResult);
+  }
+  else {
+    res.statusMessage = 'Filenames or index file with such name doesn\'t exist in system.'
+    res.sendStatus(409);
+  }
 }

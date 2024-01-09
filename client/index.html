@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Lab Pogorelov</title>
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="block-wrapper">
+      <div class="input-block-header">Index creation</div>
+      <div class="input-box">
+        <span>Dirname: </span><input type="text" id="create-dirname" placeholder="Default: files">
+        <span>Index: </span><input type="text" id="create-index" placeholder="Default: index">
+        <span>Filenames: </span><input type="text" id="create-filenames" placeholder="Default: filenames">
+        <button onclick="createIndex()">CREATE</button>
+      </div>
+      <div class="output-box">
+        <span id="create-output"></span>
+      </div>
+    </div>
+    <div class="block-wrapper">
+      <div class="input-block-header">Query</div>
+      <div class="input-box">
+        <span>Word: </span><input type="text" id="query-word">
+        <span>Index: </span><input type="text" id="query-index" placeholder="Default: index">
+        <span>Filenames: </span><input type="text" id="query-filenames" placeholder="Default: filenames">
+        <button onclick="query()">QUERY</button>
+      </div>
+      <div class="output-box">
+        <span id="query-output"></span>
+      </div>
+    </div>
+  </div>
+  <script src="./url-builders.js"></script>
+  <script src="./client.js"></script>
+</body>
+</html>

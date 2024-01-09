@@ -41,7 +41,8 @@ export function getWordCountsInFiles(word: string, index: string, filenames: str
   }
   const index_buff = fs.readFileSync(index_path).toString();
   const index_arr: any[] = JSON.parse(index_buff);
-  const freq: number[] = index_arr.find(w => w.word === word).freq;
+  const word_value = index_arr.find(w => w.word === word)
+  const freq: number[] = word_value ? word_value.freq : [];
   const res: any[] = [];
   for (const i in freq) {
     if (freq[i] > 0) res.push({ file: files[i], counts: freq[i] });

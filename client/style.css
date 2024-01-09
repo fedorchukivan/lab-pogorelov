@@ -1,0 +1,40 @@
+.block-wrapper {
+  padding: 5px;
+}
+
+.input-block-header {
+  text-align: center;
+}
+
+.input-box {
+  margin-top: 15px;
+  display: grid;
+  row-gap: 5px;
+}
+
+.input-box > button {
+  grid-column-start: 1;
+  grid-column-end: 8;
+}
+
+.input-box > input {
+  grid-column-start: 2;
+  grid-column-end: 8;
+}
+
+.input-box > span {
+  grid-column-start: 1;
+}
+
+.main-wrapper {
+  margin: 5% 33% 0 33%;
+}
+
+.output-box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+  gap: 5px;
+}
