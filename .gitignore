@@ -1,3 +1,6 @@
+#Directory with source and output json files
+files
+
 # Logs
 logs
 *.log
